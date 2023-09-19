@@ -1,0 +1,17 @@
+[book]
+authors = ["Matt Burgess"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Terraform Cloud Path to Production Guide"
+
+[preprocessor]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "2.0.2" # do not edit: managed by `mdbook-admonish install`
+
+[output]
+
+[output.html]
+additional-css = ["./mdbook-admonish.css"]
