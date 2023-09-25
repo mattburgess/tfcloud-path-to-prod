@@ -10,6 +10,8 @@ A number of accounts, credentials and command line utilities are required in ord
 
 1. An account on [GitHub](https://github.com/signup)
 
+1. An account on [AWS](https://aws.amazon.com/free/)
+
 ## Command Line Utilities
 
 1. The `terraform` CLI. Follow Hashicorp's [Installation instructions](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your OS of choice. Although you'll be using Terraform Cloud to ultimately deploy your infrastructure, the local CLI is used to initially bootstrap things and can be further used to execute plans and applies in Terraform Cloud
@@ -55,7 +57,7 @@ Similar to the Terraform Cloud API key created above, because Terraform will be 
 GitHub's [documentation](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) shows how to create a PAT.
 
 Applying the principle of least privilege, the PAT token only needs read access to repositories. This enables Terraform Cloud to detect commits pushed to repositories and subsequently run plans and applies based on those changes. To grant this access select `Repository access -> All repositories` then under `Permissions -> Repository permissions` select `Contents -> Read-only`. Terraform Cloud also needs to be able to create webhooks. To grant this access
-select `Permissions -> Repository permissions -> Webhooks -> Read and Write`
+select `Permissions -> Repository permissions -> Webhooks -> Read and Write`. Lastly, Terraform Cloud needs to be able to post commit statuses back to the PR to indicate whether the run was successful or not. To grant this access select `Permissions -> Repository permissions -> Commit statuses -> Read and Write`.
 
 Set the appropriate credentials variable:
 
@@ -91,3 +93,7 @@ Copy and paste the following into a new file, `locals.tf`, and adjust the values
 ```hcl
 {{#include locals.tf}}
 ```
+
+## AWS Credentials
+
+Follow [AWS' instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for creating an access key for your own IAM user account. We will only need these to bootstrap connectivity between Terraform Cloud and AWS; after that then we'll use an IAM role to provide temporary security credentials.
