@@ -4,7 +4,7 @@ Terraform Cloud is a Hashicorp product that can be used to automate making chang
 
 ## Contributing
 
-This guide is free and open source. You can find the source on [GitHub](https://github.com/mattburgess/tfcloud-guide). If you spot any mistakes or have any feature requests these can be posted on the [GitHub issue tracker](https://github.com/mattburgess/tfcloud-guide/issues).
+This guide is free and open source. You can find the source on [GitHub](https://github.com/mattburgess/tfcloud-path-to-prod). If you spot any mistakes or have any feature requests these can be posted on the [GitHub issue tracker](https://github.com/mattburgess/tfcloud-path-to-prod/issues).
 
 ## License
 
