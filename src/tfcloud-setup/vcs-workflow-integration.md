@@ -30,7 +30,7 @@ git push
 ```
 
 ````admonish note
-It's important to note that the above commit is made to a branch, rather than directly on the `main` branch. The repository was specifically configured to ensure that pushes can't be made directly to the `main` branch, but first have to be validated by a Terraform Cloud [speculative plan](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations#speculative-plans).
+It's important to note that the above commit is made on a short-lived branch, rather than directly on the default (`main`) branch. The repository was specifically configured to ensure that pushes can't be made directly to the `main` branch, but first have to be validated by a Terraform Cloud [speculative plan](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations#speculative-plans).
 
 If you try to push directly to `main` you'll see an error similar to the following:
 
