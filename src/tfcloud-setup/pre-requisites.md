@@ -14,7 +14,7 @@ A number of accounts, credentials and command line utilities are required in ord
 
 ## Command Line Utilities
 
-1. The `terraform` CLI. Follow Hashicorp's [Installation instructions](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your OS of choice. Although you'll be using Terraform Cloud to ultimately deploy your infrastructure, the local CLI is used to initially bootstrap things and can be further used to execute plans and applies in Terraform Cloud
+1. The `terraform` CLI. Follow Hashicorp's [installation instructions](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your OS of choice. Although you'll be using Terraform Cloud to ultimately deploy your infrastructure, the local CLI is used to initially bootstrap things and can be further used to execute plans and applies in Terraform Cloud
 
 ## Terraform Code Working Directory
 
@@ -47,7 +47,7 @@ echo "tfe_token = \"${tfe_token}\"" > credentials.auto.tfvars
 ```
 
 ```admonish note
-The default `.gitignore` file that was added to the repo during initial creation will prevent this `credentials.auto.tfvars` file from being committed; this is exactly what we want as it contains security-critical information that you absolutely **do not** want made public on GitHub.
+The default `.gitignore` file that will added to our Terraform Cloud management repository during initial creation will prevent this `credentials.auto.tfvars` file from being committed; this is exactly what we want as it contains security-critical information that you absolutely **do not** want made public on GitHub.
 ```
 
 ## GitHub Personal Access Token for Pipelines
@@ -83,7 +83,7 @@ echo 'github_admin_token = "github_pat_*****..."' >> credentials.auto.tfvars
 ```
 
 ```admonish warning
-The GitHub PAT above has **very** high privilges across **all** repositories. As such, it is crucial that this PAT isn't leaked or re-used for other purposes.
+The GitHub PAT above has **very** high privileges across **all** repositories. As such, it is crucial that this PAT isn't leaked or re-used for other purposes.
 ```
 
 ## Terraform Cloud and GitHub Related Settings
