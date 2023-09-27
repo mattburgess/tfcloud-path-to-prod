@@ -9,6 +9,24 @@ resource "github_repository" "tfcloud_mgmt" {
   }
 }
 
+resource "github_branch_default" "tfcloud_mgmt_main" {
+  repository = github_repository.tfcloud_mgmt.name
+  branch     = "main"
+}
+
+resource "github_branch_protection" "tfcloud_mgmt" {
+  repository_id  = github_repository.tfcloud_mgmt.name
+  pattern        = github_branch_default.tfcloud_mgmt_main.branch
+  enforce_admins = true
+
+  required_status_checks {
+    strict = false
+    contexts = [
+      "Terraform Cloud/${tfe_organization.example.name}/${tfe_workspace.tfcloud_mgmt_prod.name}",
+    ]
+  }
+}
+
 resource "tfe_project" "tfcloud_mgmt" {
   organization = tfe_organization.example.id
   name         = "tfcloud-mgmt"

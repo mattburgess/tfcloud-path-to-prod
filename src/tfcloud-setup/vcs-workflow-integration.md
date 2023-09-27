@@ -22,13 +22,32 @@ That's clear evidence that it's treating the repo as that source of truth; the r
 cd ../
 git clone https://github.com/your-github-org-name/tfcloud-mgmt
 cd tfcloud-mgmt
-cp ../tfcloud-mgmt-scratch/*.tf
+cp ../tfcloud-mgmt-scratch/*.tf .
+git checkout -b tfcloud-mgmt
 git add .
 git commit -m "Add tfcloud-mgmt resources"
 git push
 ```
 
-Visiting the workspace in the Terraform Cloud UI, you should see a run be queued then the plan running. It should finish with no changes being detected. This now proves that the state, as managed by Terraform Cloud, is up to date with the code in the GitHub repository.
+````admonish note
+It's important to note that the above commit is made to a branch, rather than directly on the `main` branch. The repository was specifically configured to ensure that pushes can't be made directly to the `main` branch, but first have to be validated by a Terraform Cloud [speculative plan](https://developer.hashicorp.com/terraform/cloud-docs/run/remote-operations#speculative-plans).
+
+If you try to push directly to `main` you'll see an error similar to the following:
+
+```
+remote: error: GH006: Protected branch update failed for refs/heads/main.
+remote: error: Required status check "Terraform Cloud/your-tfcloud-org/tfcloud-mgmt-prod" is expected.
+To https://github.com/your-github-org/tfcloud-mgmt
+ ! [remote rejected] main -> main (protected branch hook declined)
+error: failed to push some refs to 'https://github.com/your-github-org/tfcloud-mgmt'
+```
+````
+
+In order to have Terraform Cloud start a speculative plan, open a PR from the newly created `tfcloud-mgmt` branch.
+
+The GitHub check should quite quickly progress from `Pending` to `All checks have passed` and the `Details` link will take you directly to the relevant run in the Terraform Cloud UI. Both the GitHub and Terraform Cloud UIs should show that no changes were detected.
+
+Merge the PR then confirm in the Terraform Cloud UI that another plan was run which similarly detected no changes.
 
 ## Tidy up
 

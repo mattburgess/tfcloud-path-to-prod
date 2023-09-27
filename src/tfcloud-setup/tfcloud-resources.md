@@ -14,20 +14,20 @@ Next, copy and paste the following into `tfcloud_variables.tf`. The resources be
 {{#include tfcloud_variables.tf}}
 ```
 
-Next, copy and paste the following into `tfcloud_mgmt_project.tf` to create the Terraform Cloud project and workspace along with the associated GitHub repository. This also creates a workspace-scoped "variable set" resource to hold the credentials that Terraform Cloud will need in order to interact with both the Terraform Enterprise API and GitHub API. We follow Hashicorp's [recommended practice](https://developer.hashicorp.com/terraform/tutorials/cloud/cloud-multiple-variable-sets) of scoping the variable sets as narrowly as possible; we don't want any old project or workspace in our organization to be able to make changes to the Terraform Cloud organization.Again, you'll need to replace the placeholder values with ones that will work for you:
+Next, copy and paste the following into `tfcloud_mgmt_project.tf` to create the Terraform Cloud project and workspace along with the associated GitHub repository. This also creates a workspace-scoped "variable set" resource to hold the credentials that Terraform Cloud will need in order to interact with both the Terraform Enterprise API and GitHub API. We follow Hashicorp's [recommended practice](https://developer.hashicorp.com/terraform/tutorials/cloud/cloud-multiple-variable-sets) of scoping the variable sets as narrowly as possible; we don't want any old project or workspace in our organization to be able to make changes to the Terraform Cloud organization.
 
 ```hcl
 {{#include tfcloud_mgmt_project.tf}}
 ```
 
-Running `terraform apply` should show that 12 resources need to be created, so go ahead and confirm to get things set up!
+Running `terraform apply` should show that 14 resources need to be created, so go ahead and confirm to get things set up!
 
 ```sh
 $ terraform apply
 ...
-Plan: 12 to add, 0 to change, 0 to destroy.
+Plan: 14 to add, 0 to change, 0 to destroy.
 ...
-Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
 ```
 
 Congratulations! You now have a Terraform Cloud organization, project and workspace configured. You also have a GitHub repository that is linked up to that workspace.
