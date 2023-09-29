@@ -91,7 +91,7 @@ The GitHub PAT above has **very** high privileges across **all** repositories. A
 Copy and paste the following into a new file, `locals.tf`, and adjust the values to match your desired Terraform Cloud and GitHub organization names:
 
 ```hcl
-{{#include locals.tf}}
+{{#include terraform/locals.tf}}
 ```
 
 ## AWS Credentials
