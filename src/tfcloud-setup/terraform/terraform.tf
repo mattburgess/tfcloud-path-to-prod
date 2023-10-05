@@ -2,17 +2,15 @@ terraform {
   required_providers {
     tfe = {
       source  = "hashicorp/tfe"
-      version = "~> 0.48.0"
+      version = "~> 0.49.2"
     }
     github = {
       source  = "integrations/github"
-      version = "~> 5.38.0"
-    }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.19.0"
+      version = "~> 5.39.0"
     }
   }
+
+  required_version = "~> 1.6.0"
 }
 
 provider "tfe" {
@@ -21,8 +19,4 @@ provider "tfe" {
 
 provider "github" {
   token = var.github_admin_token
-}
-
-provider "aws" {
-  region = "us-east-1"
 }

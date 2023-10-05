@@ -86,14 +86,6 @@ echo 'github_admin_token = "github_pat_*****..."' >> credentials.auto.tfvars
 The GitHub PAT above has **very** high privileges across **all** repositories. As such, it is crucial that this PAT isn't leaked or re-used for other purposes.
 ```
 
-## Terraform Cloud and GitHub Related Settings
-
-Copy and paste the following into a new file, `locals.tf`, and adjust the values to match your desired Terraform Cloud and GitHub organization names:
-
-```hcl
-{{#include terraform/locals.tf}}
-```
-
 ## AWS Credentials
 
 Follow [AWS' instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for creating an access key for your own IAM user account. We will only need these to bootstrap connectivity between Terraform Cloud and AWS; after that then we'll use an IAM role to provide temporary security credentials.

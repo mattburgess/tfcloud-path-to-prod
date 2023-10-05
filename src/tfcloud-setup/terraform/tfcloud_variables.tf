@@ -1,4 +1,3 @@
-
 resource "tfe_variable_set" "tfcloud_common_credentials" {
   organization = tfe_organization.example.id
   name         = "tfcloud-common-credentials"

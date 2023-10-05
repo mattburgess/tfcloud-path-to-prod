@@ -1,5 +1,9 @@
+locals {
+  tfcloud_mgmt_project_name = "tfcloud-mgmt"
+}
+
 resource "github_repository" "tfcloud_mgmt" {
-  name               = "tfcloud-mgmt"
+  name               = local.tfcloud_mgmt_project_name
   auto_init          = true
   gitignore_template = "Terraform"
   license_template   = "mit"
@@ -29,16 +33,17 @@ resource "github_branch_protection" "tfcloud_mgmt" {
 
 resource "tfe_project" "tfcloud_mgmt" {
   organization = tfe_organization.example.id
-  name         = "tfcloud-mgmt"
+  name         = local.tfcloud_mgmt_project_name
 }
 
 resource "tfe_workspace" "tfcloud_mgmt_prod" {
-  name         = "tfcloud-mgmt-prod"
-  organization = tfe_organization.example.id
-  project_id   = tfe_project.tfcloud_mgmt.id
+  name              = "${local.tfcloud_mgmt_project_name}-prod"
+  organization      = tfe_organization.example.id
+  project_id        = tfe_project.tfcloud_mgmt.id
+  terraform_version = "~> 1.6.0"
 
   tag_names = [
-    "tfcloud-mgmt",
+    local.tfcloud_mgmt_project_name,
     "prod"
   ]
 

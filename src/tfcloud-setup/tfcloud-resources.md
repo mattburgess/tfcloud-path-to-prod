@@ -2,7 +2,7 @@
 
 We'd like Terraform to deploy the Terraform Cloud organization, a project within that organization, and a workspace within that project. Further, by linking the GitHub repository with the workspace, we can demonstrate Terraform Cloud's ability to automatically plan and apply changes made by commits to that repository.
 
-To start with, copy and paste the following into `organization.tf` to create the Terraform Cloud Organization, replacing the placeholder values with ones that will work for you. This will also create an OAuth client so that Terraform can watch for and react to commits to GitHub repositories.
+To start with, copy and paste the following into `main.tf` to create the Terraform Cloud Organization and an OAuth client so that Terraform Cloud can watch for and react to commits to GitHub repositories.
 
 ```hcl
 {{#include terraform/main.tf}}
@@ -31,5 +31,9 @@ Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
 ```
 
 Congratulations! You now have a Terraform Cloud organization, project and workspace configured. You also have a GitHub repository that is linked up to that workspace.
+
+```admonish
+Because we initialized a new GitHub repository and then immediately created a workspace linked to it, if you visit the Terraform Cloud UI then you'll notice that a `terraform plan` has already been triggered and failed because there's no Terraform code in that repository yet. We'll sort that out in just a moment.
+```
 
 Notice that in your current working directory there is a file called `terraform.tfstate` which holds the state of your Terraform Cloud configuration as far as your local `terraform` considers it. Alas, Terraform Cloud itself knows nothing of this state of affairs. Next we'll perform a state migration which is how we get your local copy of the state into Terraform Cloud.
