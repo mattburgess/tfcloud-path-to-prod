@@ -88,4 +88,4 @@ The GitHub PAT above has **very** high privileges across **all** repositories. A
 
 ## AWS Credentials
 
-Follow [AWS' instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for creating an access key for your own IAM user account. We will only need these to bootstrap connectivity between Terraform Cloud and AWS; after that then we'll use an IAM role to provide temporary security credentials.
+Follow [AWS' instructions](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for creating an access key for your own IAM user account. We will only need these to bootstrap connectivity between Terraform Cloud and AWS; after that then we'll use an IAM role to provide temporary security credentials for the duration of Terraform Cloud's runs.

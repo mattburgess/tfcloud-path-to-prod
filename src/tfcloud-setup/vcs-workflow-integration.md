@@ -22,7 +22,7 @@ That's clear evidence that it's treating the repo as that source of truth; the r
 cd ../
 git clone https://github.com/your-github-org-name/tfcloud-mgmt
 cd tfcloud-mgmt
-cp ../tfcloud-mgmt-scratch/*.tf .
+cp ../tfcloud-mgmt-scratch/*.tf ../tfcloud-mgmt-scratch/*.hcl .
 git checkout -b tfcloud-mgmt
 git add .
 git commit -m "Add tfcloud-mgmt resources"
